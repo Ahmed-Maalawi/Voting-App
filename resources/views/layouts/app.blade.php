@@ -13,7 +13,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans bg-gray-background text-gray-900 text-sm">
+<body class="font-sans bg-gray-background text-gray-900 text-sm bg-gray-100">
 <header class="flex items-center justify-between px-8 py-4">
     <a href="#">
         <img src="{{ asset('img/logo.svg') }}" alt="logo">
@@ -47,5 +47,35 @@
         </a>
     </div>
 </header>
+<main class="container mx-auto max-w-custom flex">
+    <div class="w-70 mr-5">
+        addd idea form here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequatur corporis
+        esse eum expedita facere molestias odit praesentium, quas repudiandae! Ad eum quaerat quas repudiandae? Autem
+        corporis eligendi eveniet laboriosam magnam modi necessitatibus pariatur rerum voluptates! Deleniti error
+        pariatur sit.
+    </div>
+    <div class="w-175" style="max-width: 700px">
+        <nav class="flex item-center justify-between text-xs">
+            <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                <li><a href="" class="border-b-4 pb-3 border-blue">All Ideas (78)</a></li>
+                <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">Considering
+                        (6)</a></li>
+                <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">In
+                        Progress (78)</a></li>
+            </ul>
+
+            <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
+                <li><a href="" class="border-b-4 pb-3 border-blue">Implemented (78)</a></li>
+                <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">Closed
+                        (78)</a></li>
+                {{--                    <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">All Ideas (78)</a></li>--}}
+            </ul>
+        </nav>
+
+        <div class="mt-8">
+            {{ $slot }}
+        </div>
+    </div>
+</main>
 </body>
 </html>
