@@ -49,10 +49,51 @@
 </header>
 <main class="container mx-auto max-w-custom flex">
     <div class="w-70 mr-5">
-        addd idea form here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium consequatur corporis
-        esse eum expedita facere molestias odit praesentium, quas repudiandae! Ad eum quaerat quas repudiandae? Autem
-        corporis eligendi eveniet laboriosam magnam modi necessitatibus pariatur rerum voluptates! Deleniti error
-        pariatur sit.
+        <div class="border-2 border-blue rounded-xl mt-16 bg-white">
+            <div class="text-center px-6 py-2 pt-6">
+                <h3 class="font-semibold text-base">Add an idea</h3>
+                <p class="text-xs mt-4">let us know what you would like and we'll take a look over!</p>
+                <form action="" method="POST" class="space-y-4 px-4 py-6 ">
+                    <div>
+                        <input type="text"
+                               class="w-full bg-gray-100 text-sm rounded-xl placeholder-gray-900 px-4 py-2 border-none"
+                               placeholder="Your Idea">
+                    </div>
+                    <div>
+                        <select name="category_add" id="category_add"
+                                class="w-full bg-gray-100 text-sm rounded-xl placeholder-gray-900 px-4 py-2 border-none">
+                            <option value="">category one</option>
+                            <option value="">category one</option>
+                            <option value="">category one</option>
+                            <option value="">category one</option>
+                        </select>
+                    </div>
+                    <div>
+                        <textarea name="idea" id="idea" cols="30" rows="4"
+                                  class="w-full bg-gray-100 text-sm rounded-xl placeholder-gray-900 px-4 py-2 border-none"
+                                  placeholder="Describe your idea"></textarea>
+                    </div>
+                    <div class="flex items-center justify-between space-x-3">
+                        <button
+                            type="button"
+                            class="w-1/2 flex h-8 text-xs bg-gray-200 font-semibold rounded-xl border-gray-200 hover:bg-gray-400 transition duration-150 ease-in flex items-center justify-center">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                 class="w-5 text-gray-600">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"/>
+                            </svg>
+                            <span class="ml-1">Attach</span>
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="w-1/2 h-8 text-xs bg-blue border-blue font-semibold text-white rounded-xl border hover:bg-blue-hover transition duration-150 ease-in">
+                            <span>Submit</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="w-175" style="max-width: 700px">
         <nav class="flex item-center justify-between text-xs">
@@ -68,7 +109,6 @@
                 <li><a href="" class="border-b-4 pb-3 border-blue">Implemented (78)</a></li>
                 <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">Closed
                         (78)</a></li>
-                {{--                    <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">All Ideas (78)</a></li>--}}
             </ul>
         </nav>
 
