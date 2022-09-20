@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* vertical line to the left of the comments */
+
+.comment-container::before {
+    position: absolute;
+    display: block;
+    top: 57px;
+    content: "";
+    width: 23px;
+    height: 3px;
+    background: #edf0f5;
+    left: -40px;
+    /*opacity: .07;*/
+}
+
+.comments-container::before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: -40px;
+    position: absolute;
+    width: 3px;
+    background: #edf0f5;
+    /*opacity: .07;*/
+}
+
+.comment-container:last-child::after {
+    position: absolute;
+    display: block;
+    top: 60px;
+    left: -40px;
+    content: "";
+    width: 3px;
+    height: calc(100% - 10px);
+    background: #f3f4f6;
+}
+
+.is-admin::before {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border-radius: 38px;
+    border: 7px solid white;
+    box-shadow: 7px 4px 15px 0 rgba(36, 37, 38, .08);
+    left: -58px;
+    background: theme('colors.purple');
+    opacity: 1;
+}

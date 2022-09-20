@@ -47,12 +47,14 @@
                     </button>
                 </div>
             </div>
-            <div class="flex px-2 py-6">
-                <a href="#" class="flex-none">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
-                         class="w-14 h-14 rounded-xl">
-                </a>
-                <div class="mx-4">
+            <div class="flex flex-1 px-2 py-6">
+                <div class="flex-none">
+                    <a href="#">
+                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
+                             class="w-14 h-14 rounded-xl">
+                    </a>
+                </div>
+                <div class="mx-4 w-full">
                     <h4 class="font-semibold text-xl">
                         <a href="" class="hover:underline">Random Title Click here to go.</a>
                     </h4>
@@ -74,7 +76,7 @@
                                 open
                             </button>
                             <button
-                                class="text-center rounded-full bg-gray-100 hover:bg-gray-200  text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
+                                class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      class="bi bi-three-dots text-gray-400" viewBox="0 0 16 16">
                                     <path
