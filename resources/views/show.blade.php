@@ -38,19 +38,23 @@
                         <div>&bull;</div>
                         <div class="text-gray-600">3 comments</div>
                     </div>
-                    <div class="flex items-center space-x-2 hidden">
-                        <button
+
+                    <div x-data="{isOpen: false}" class="flex items-center space-x-2">
+                        <div
                             class="text-center rounded-full bg-gray-200 uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none">
                             open
-                        </button>
-                        <button
-                            class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
+                        </div>
+
+                        <button @click="isOpen = !isOpen"
+                                class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-three-dots text-gray-400" viewBox="0 0 16 16">
                                 <path
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                             </svg>
-                            <ul class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left ml-8">
+                            <ul x-cloak x-show="isOpen" @keydown.escape.window="isOpen = false"
+                                @click.outside="isOpen = false"
+                                class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left ml-8">
                                 <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
                                        href="#">mark as spam</a></li>
                                 <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
@@ -268,22 +272,6 @@
                             <div class="font-bold text-blue">Ahmed</div>
                             <div class="ml-1">10 hours age</div>
                         </div>
-                        <div class="flex items-center space-x-2 hidden">
-                            <button
-                                class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-three-dots text-gray-400" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                </svg>
-                                <ul class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left ml-8">
-                                    <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
-                                           href="#">mark as spam</a></li>
-                                    <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
-                                           href="#">Delete post</a></li>
-                                </ul>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -313,22 +301,6 @@
                             <div class="font-bold text-blue">Ahmed</div>
                             <div class="ml-1">10 hours age</div>
                         </div>
-                        <div class="flex items-center space-x-2 hidden">
-                            <button
-                                class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-three-dots text-gray-400" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                </svg>
-                                <ul class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left ml-8">
-                                    <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
-                                           href="#">mark as spam</a></li>
-                                    <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
-                                           href="#">Delete post</a></li>
-                                </ul>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -357,22 +329,6 @@
                         <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
                             <div class="font-bold text-blue">Ahmed</div>
                             <div class="ml-1">10 hours age</div>
-                        </div>
-                        <div class="flex items-center space-x-2 hidden">
-                            <button
-                                class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-three-dots text-gray-400" viewBox="0 0 16 16">
-                                    <path
-                                        d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                </svg>
-                                <ul class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left ml-8">
-                                    <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
-                                           href="#">mark as spam</a></li>
-                                    <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
-                                           href="#">Delete post</a></li>
-                                </ul>
-                            </button>
                         </div>
                     </div>
                 </div>
