@@ -47,13 +47,13 @@
                 </div>
             </div>
             <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
-                <div class="flex-none mx-4 md:mx-0">
+                <div class="flex-none mx-2 md:mx-0">
                     <a href="#">
                         <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
                              class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
-                <div class="mx-4 w-full">
+                <div class="md:mx-4 mx-2 w-full">
                     <h4 class="font-semibold text-xl mt-2 md:mt-0">
                         <a href="" class="hover:underline">Random Title Click here to go.</a>
                     </h4>
@@ -86,7 +86,7 @@
                                     </svg>
                                     <ul x-cloak x-show="isOpen" @keydown.escape.window="isOpen = false"
                                         @click.outside="isOpen = false"
-                                        class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left ml-8">
+                                        class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left py-3 md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                         <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
                                                href="#">mark as spam</a></li>
                                         <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
@@ -381,7 +381,7 @@
                              class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
-                <div class="mx-4 w-full">
+                <div class="mx-2 md:mx-4 w-full">
                     <h4 class="font-semibold text-xl mt-2 md:mt-0">
                         <a href="" class="hover:underline">Random Title Click here to go.</a>
                     </h4>
