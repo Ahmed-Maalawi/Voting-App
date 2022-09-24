@@ -18,7 +18,6 @@ class UserTest extends TestCase
             'email' => 'maalawi@gmail.com'
         ]);
 
-
         $gravatarUrl = $user->getAvatar();
         dd($gravatarUrl);
     }

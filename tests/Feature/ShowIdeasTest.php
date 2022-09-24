@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Category;
 use App\Models\Idea;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -18,13 +19,19 @@ class ShowIdeasTest extends TestCase
      */
     public function list_of_ideas_show_on_main_page()
     {
+
+        $categoryOne = Category::factory()->create(['name' => 'category 1']);
+        $categoryTwo = Category::factory()->create(['name' => 'category 2']);
+
         $ideaOne = Idea::factory()->create([
             'title' => 'My first title',
+            'category_id' => $categoryOne->id,
             'description' => 'description of my first idea title',
         ]);
 
         $ideaTwo = Idea::factory()->create([
             'title' => 'My second title',
+            'category_id' => $categoryTwo->id,
             'description' => 'description of my second idea title',
         ]);
 
@@ -32,8 +39,10 @@ class ShowIdeasTest extends TestCase
         $response->assertSuccessful();
         $response->assertSee($ideaOne->title);
         $response->assertSee($ideaOne->description);
+        $response->assertSee($categoryOne->name);
         $response->assertSee($ideaTwo->title);
         $response->assertSee($ideaTwo->description);
+        $response->assertSee($categoryTwo->name);
     }
 
     /**
@@ -57,7 +66,12 @@ class ShowIdeasTest extends TestCase
 
     public function ideas_pagination_works()
     {
-        Idea::factory(Idea::PAGINATION_COUNT + 1)->create();
+
+        $category = Category::factory()->create(['name', 'Category 1']);
+
+        Idea::factory(Idea::PAGINATION_COUNT + 1)->create([
+            'category_id' => $category->id,
+        ]);
 
         $ideaOne = Idea::find(1);
         $ideaOne->title = 'My first idea';
@@ -79,12 +93,16 @@ class ShowIdeasTest extends TestCase
 
     public function same_idea_title_different_slug()
     {
+        $category = Category::factory()->create(['name', 'Category 1']);
+
         $ideaOne = Idea::factory()->create([
+            'category_id' => $category->id,
             'title' => 'My first title',
             'description' => 'description of my first idea title',
         ]);
 
         $ideaTwo = Idea::factory()->create([
+            'category_id' => $category->id,
             'title' => 'My first title',
             'description' => 'description of my second idea title',
         ]);
