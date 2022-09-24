@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreIdeaRequest;
-use App\Http\Requests\UpdateIdeaRequest;
-use App\Models\Idea;
+use App\Http\Requests\StoreStatusRequest;
+use App\Http\Requests\UpdateStatusRequest;
+use App\Models\Status;
 use Illuminate\Http\Response;
 
-class IdeaController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        return view('idea.index', [
-            'ideas' => Idea::with('user', 'category', 'status')
-                ->simplePaginate(Idea::PAGINATION_COUNT),
-        ]);
+        //
     }
 
     /**
@@ -35,10 +32,10 @@ class IdeaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreIdeaRequest $request
+     * @param StoreStatusRequest $request
      * @return Response
      */
-    public function store(StoreIdeaRequest $request)
+    public function store(StoreStatusRequest $request)
     {
         //
     }
@@ -46,23 +43,21 @@ class IdeaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Idea $idea
+     * @param Status $status
      * @return Response
      */
-    public function show(Idea $idea)
+    public function show(Status $status)
     {
-        return view('idea.show', [
-            'idea' => $idea,
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Idea $idea
+     * @param Status $status
      * @return Response
      */
-    public function edit(Idea $idea)
+    public function edit(Status $status)
     {
         //
     }
@@ -70,11 +65,11 @@ class IdeaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateIdeaRequest $request
-     * @param Idea $idea
+     * @param UpdateStatusRequest $request
+     * @param Status $status
      * @return Response
      */
-    public function update(UpdateIdeaRequest $request, Idea $idea)
+    public function update(UpdateStatusRequest $request, Status $status)
     {
         //
     }
@@ -82,10 +77,10 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Idea $idea
+     * @param Status $status
      * @return Response
      */
-    public function destroy(Idea $idea)
+    public function destroy(Status $status)
     {
         //
     }

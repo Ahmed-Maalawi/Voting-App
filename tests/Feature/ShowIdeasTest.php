@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\Idea;
+use App\Models\Status;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -20,29 +21,41 @@ class ShowIdeasTest extends TestCase
     public function list_of_ideas_show_on_main_page()
     {
 
+        $statusOpen = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $statusConsidering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
+
         $categoryOne = Category::factory()->create(['name' => 'category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'category 2']);
 
         $ideaOne = Idea::factory()->create([
             'title' => 'My first title',
             'category_id' => $categoryOne->id,
+            'status_id' => $statusOpen->id,
             'description' => 'description of my first idea title',
         ]);
 
         $ideaTwo = Idea::factory()->create([
             'title' => 'My second title',
             'category_id' => $categoryTwo->id,
+            'status_id' => $statusConsidering->id,
             'description' => 'description of my second idea title',
         ]);
 
         $response = $this->get(route('idea.index'));
         $response->assertSuccessful();
+
         $response->assertSee($ideaOne->title);
         $response->assertSee($ideaOne->description);
-        $response->assertSee($categoryOne->name);
+
         $response->assertSee($ideaTwo->title);
         $response->assertSee($ideaTwo->description);
+
         $response->assertSee($categoryTwo->name);
+        $response->assertSee($categoryOne->name);
+
+        $response->assertSee($statusConsidering->name);
+
+
     }
 
     /**

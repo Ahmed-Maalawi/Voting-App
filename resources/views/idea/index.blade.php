@@ -82,10 +82,10 @@
                         <div class="flex items-center justify-between space-x-2 mt-4 md:mt-0" x-data="{isOpen: false}">
 
                             <div class="flex items-center space-x-2 mt-4 md:mt-0">
-                                <button
-                                    class="text-center rounded-full bg-gray-200 uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none">
-                                    open
-                                </button>
+                                <div
+                                    class=" text-center rounded-full uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none {{ $idea->status->classes }}">
+                                    {{ $idea->status->name }}
+                                </div>
                                 <button
                                     @click="isOpen = !isOpen"
                                     class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
