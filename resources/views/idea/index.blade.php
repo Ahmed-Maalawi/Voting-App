@@ -34,6 +34,18 @@
     <div class="ideas-container space-y-6 my-6">
         @foreach($ideas as $idea)
         <div
+            x-data
+            @click="
+
+            let clicked = $event.target
+            let target = clicked.tagName.toLowerCase()
+
+            let ignores = ['button', 'svg', 'a', 'path']
+
+            if(! ignores.includes(target) ) {
+                clicked.closest('.idea-container').querySelector('.idea-link').click()
+            }
+            "
             class="ideas-container hover:shadow-card bg-white rounded-xl flex transition ease-in duration-150 cursor-pointer">
             <div class=" hidden md:block border-r border-gray-100 px-5 py-8">
                 <div class="text-center">
@@ -50,7 +62,7 @@
             <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
                 <div class="flex-none mx-2 md:mx-0">
                     <a href="#">
-                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar"
+                        <img src="{{ $idea->user->getAvatar() }}" alt="avatar"
                              class="w-14 h-14 rounded-xl">
                     </a>
                 </div>
