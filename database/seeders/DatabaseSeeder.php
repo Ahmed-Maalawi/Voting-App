@@ -27,17 +27,17 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        User::factory()->create([
-            'name' => 'Andre',
-            'email' => 'andre_testing@gmail.com',
-        ]);
+//        User::factory()->create([
+//            'name' => 'Andre',
+//            'email' => 'andre_madarang@hotmail.com',
+//        ]);
 
-        User::factory(19)->create();
+        User::factory(20)->create();
 
-        Category::factory()->create(['name' => 'Category1']);
-        Category::factory()->create(['name' => 'Category2']);
-        Category::factory()->create(['name' => 'Category3']);
-        Category::factory()->create(['name' => 'Category4']);
+        Category::factory()->create(['name' => 'Category 1']);
+        Category::factory()->create(['name' => 'Category 2']);
+        Category::factory()->create(['name' => 'Category 3']);
+        Category::factory()->create(['name' => 'Category 4']);
 
 
         Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
                 if ($idea_id % 2 === 0) {
                     Vote::factory()->create([
                         'user_id' => $user_id,
-                        'idea_id' => $user_id,
+                        'idea_id' => $idea_id,
                     ]);
                 }
             }

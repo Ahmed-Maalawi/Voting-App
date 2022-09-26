@@ -65,5 +65,10 @@ class User extends Authenticatable
             . $integerToUse
             . '.png';
     }
+
+    public function votes()
+    {
+        return $this->belongsToMany(Idea::class, 'votes');
+    }
 }
 //src="//www.gravatar.com/avatar/c314707cc447ff6b2fc4db41410ff349?s=100&d=https%3A%2F%2Fs3.amazonaws.com%2Flaracasts%2Fimages%2Fforum%2Favatars%2Fdefault-avatar-6.png"
