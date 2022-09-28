@@ -48,53 +48,13 @@ class Idea extends Model
         return $this->belongsToMany(User::class, 'votes');
     }
 
-//    public function getStatusClasses()
-//    {
-//        $allStatuses = [
-//            'Open' => 'bg-gray-200',
-//            'Considering' => 'bg-purple text-white',
-//            'In Progress' => 'bg-yellow text-white',
-//            'Implemented' => 'bg-green text-white',
-//            'Closed' => 'bg-red text-white',
-//        ];
+    public function isVotedByUser(?User $user)
+    {
+        if (!$user) {
+            return false;
+        }
 
-//        return $allStatuses[$this->status->name];
-
-//        -----------------  if else cases  -----------------------
-//        if($this->status->name === 'Open'){
-//            return 'bg-gray-200';
-//        } elseif ($this->status->name === 'Considering') {
-//            return 'bg-purple text-white';
-//        }elseif ($this->status->name === 'In Progress') {
-//            return 'bg-yellow text-white';
-//        }elseif ($this->status->name === 'Implemented') {
-//            return 'bg-green text-white';
-//        }elseif ($this->status->name === 'Closed') {
-//            return 'bg-red text-white';
-//        }
-//
-//        return 'bg-gray-200';
-//        ---------------   switch  cases-------------------------
-
-//        switch ($this->status->name)
-//        {
-//            case 'Open':
-//                return 'bg-gray-200';
-//                break;
-//            case 'Considering':
-//                return 'bg-purple text-white';
-//                break;
-//            case 'In Progress':
-//                return 'bg-yellow text-white';
-//                break;
-//            case 'Implemented':
-//                return 'bg-green text-white';
-//                break;
-//            case 'Closed':
-//                return 'bg-red text-white';
-//                break;
-//            default:
-//                return 'bg-gray-200';
-//        }
-//    }
+        return Vote::where('user_id', $user->id)->where('idea_id', $this->id)
+            ->exists();
+    }
 }

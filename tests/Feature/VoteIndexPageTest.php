@@ -69,7 +69,8 @@ class VoteIndexPageTest extends TestCase
         $this->get(route('idea.index'))
             ->assertViewHas('ideas', function ($ideas) {
                 return $ideas->first()->votes_count === 2;
-            });
+            }
+            );
     }
 
 
@@ -89,13 +90,23 @@ class VoteIndexPageTest extends TestCase
             'description' => 'Description for my first idea',
         ]);
 
+        Vote::factory()->create([
+            'idea_id' => $idea->id,
+            'user_id' => $user->id,
+        ]);
+
+
+        $response = $this->actingAs($user)->get(route('idea.index'));
+
+        $ideaWithVotes = $response['ideas']->items()[0];
+
         Livewire::test(IdeaShow::class, [
-            'idea' => $idea,
+            'idea' => $ideaWithVotes,
             'votesCount' => 5
         ])
-            ->assertSet('votesCount', 5)
-            ->assertSeeHtml('<div class="text-xl leading-snug">5</div>')
-            ->assertSeeHtml('<div class="text-sm font-bold leading-none">5</div>');
+            ->assertSet('hasVoted', true)
+            ->assertSee('Voted');
+//        ->assertSeeHtml('<div class="text-sm font-bold leading-none">5</div>');
 
 
     }

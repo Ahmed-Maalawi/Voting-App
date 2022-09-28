@@ -181,15 +181,25 @@
 
         <div class="flex md:items-center space-x-3 md:mt-0 mt-4 items-start">
             <div class="bg-white border rounded-xl text-center font-semibold px-3 py-2">
-                <div class="text-xl leading-snug">{{ $votesCount }}</div>
+                <div class="text-xl leading-snug @if($hasVoted) text-blue @endif">{{ $votesCount }}</div>
                 <div class="text-gray-400 text-xs leading-none">votes</div>
             </div>
 
-            <button
-                type="button"
-                class="text-center flex justify-center items-center w-36 h-11 px-6 py-3 text-xs bg-gray-200 font-semibold uppercase border rounded-xl border-gray-200 hover:bg-gray-400 transition duration-150 ease-in">
-                <span>Vote</span>
-            </button>
+            @if($hasVoted)
+                <button
+                    type="button"
+                    class="text-center text-white flex justify-center items-center w-36 h-11 px-6 py-3 text-xs font-semibold uppercase border border-blue bg-blue hover:bg-blue-hover rounded-xl transition duration-150 ease-in"
+                >
+                    <span>Voted</span>
+                </button>
+            @else
+                <button
+                    type="button"
+                    class="text-center flex justify-center items-center w-36 h-11 px-6 py-3 text-xs bg-gray-200 font-semibold uppercase border rounded-xl border-gray-200 hover:bg-gray-400 transition duration-150 ease-in"
+                >
+                    <span>Vote</span>
+                </button>
+            @endif
         </div>
     </div> <!-- end button container -->
 </div> <!-- end ideas and button containers -->

@@ -48,6 +48,7 @@ class DatabaseSeeder extends Seeder
 
         Idea::factory(100)->create();
 
+
 //        -------------------------------------------------------
 //          generate unique votes.
 
