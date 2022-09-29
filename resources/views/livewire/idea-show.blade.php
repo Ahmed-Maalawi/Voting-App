@@ -10,7 +10,7 @@
             </div>
             <div class="md:mx-4 mx-2 w-full">
                 <h4 class="font-semibold text-xl md:mt-0 mt-2">
-                    <a href="" class="hover:underline">{{ $idea->title }}</a>
+                    <a href="" class="hover:underline capitalize">{{ $idea->title }}</a>
                 </h4>
                 <div class="text-gray-600 mt-3">{{ $idea->description }}</div>
                 <div class="flex flex-col md:flex-row  justify-between md:items-center mt-6">
@@ -187,6 +187,7 @@
 
             @if($hasVoted)
                 <button
+                    wire:click.prevent="vote"
                     type="button"
                     class="text-center text-white flex justify-center items-center w-36 h-11 px-6 py-3 text-xs font-semibold uppercase border border-blue bg-blue hover:bg-blue-hover rounded-xl transition duration-150 ease-in"
                 >
@@ -194,6 +195,7 @@
                 </button>
             @else
                 <button
+                    wire:click.prevent="vote"
                     type="button"
                     class="text-center flex justify-center items-center w-36 h-11 px-6 py-3 text-xs bg-gray-200 font-semibold uppercase border rounded-xl border-gray-200 hover:bg-gray-400 transition duration-150 ease-in"
                 >

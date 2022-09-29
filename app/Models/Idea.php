@@ -57,4 +57,20 @@ class Idea extends Model
         return Vote::where('user_id', $user->id)->where('idea_id', $this->id)
             ->exists();
     }
+
+    public function removeVote(User $user)
+    {
+        Vote::where('user_id', $user->id)
+            ->where('idea_id', $this->id)
+            ->first()
+            ->delete();
+    }
+
+    public function vote(User $user)
+    {
+        Vote::create([
+            'user_id' => $user->id,
+            'idea_id' => $this->id,
+        ]);
+    }
 }

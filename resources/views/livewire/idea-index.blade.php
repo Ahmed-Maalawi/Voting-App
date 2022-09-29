@@ -14,17 +14,19 @@
     class="ideas-container hover:shadow-card bg-white rounded-xl flex transition ease-in duration-150 cursor-pointer">
     <div class=" hidden md:block border-r border-gray-100 px-5 py-8">
         <div class="text-center">
-            <div class="font-semibold text-2xl @if($hasVoted) text-blue @endif">{{ $idea->votes_count }}</div>
+            <div class="font-semibold text-2xl @if($hasVoted) text-blue @endif">{{ $votesCount }}</div>
             <div class="text-gray-500">votes</div>
         </div>
         <div class="mt-8">
             @if($hasVoted)
                 <button
+                    wire:click.prevent="vote"
                     class="w-20 bg-blue text-white border border-blue hover:bg-blue-hover font-bold text-xxs uppercase rounded-xl px-4 py-2 transition ease-in duration-150">
                     vote
                 </button>
             @else
                 <button
+                    wire:click.prevent="vote"
                     class="w-20 bg-gray-200 border border-gray-200 hover:border-gray-400 font-bold text-xxs uppercase rounded-xl px-4 py-2 transition ease-in duration-150">
                     vote
                 </button>
@@ -80,13 +82,22 @@
                     <div class="mt-4 md:mt-0 block md:hidden flex items-center space-x-2 pr-4">
                         <div
                             class="bg-white border rounded-xl text-center font-semibold px-3 py-2 @if ($hasVoted) text-blue @endif">
-                            <div class="text-sm font-bold leading-none">{{ $idea->votes_count }}</div>
+                            <div class="text-sm font-bold leading-none">{{ $votesCount }}</div>
                             <div class="font-bold leading-none text-gray-400">votes</div>
                         </div>
-                        <button
-                            class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3"
-                        >vote
-                        </button>
+                        @if($hasVoted)
+                            <button
+                                wire:click.prevent="vote"
+                                class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3"
+                            >vote
+                            </button>
+                        @else
+                            <button
+                                wire:click.prevent="vote"
+                                class="w-20 bg-gray-200 border border-gray-200 font-bold text-xxs uppercase rounded-xl hover:border-gray-400 transition duration-150 ease-in px-4 py-3"
+                            >voted
+                            </button>
+                        @endif
                     </div>
 
                 </div>
