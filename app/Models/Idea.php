@@ -13,8 +13,12 @@ class Idea extends Model
     use HasFactory, Sluggable;
 
     const PAGINATION_COUNT = 10;
-    protected $guarded = [];
 
+    const CATEGORY_TUTORIAL_REQUEST = 'Tutorial Request';
+    const CATEGORY_LARACASTS_FEATURE = 'Laracasts Feature';
+
+    protected $guarded = [];
+    public $votes_count;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -62,12 +66,13 @@ class Idea extends Model
 
     public function removeVote(User $user)
     {
-        $ideaToDelete = Vote::where('user_id', $user->id)
+        $voteToDelete = Vote::where('user_id', $user->id)
             ->where('idea_id', $this->id)
             ->first();
 
-        if ($ideaToDelete) {
-            $ideaToDelete->delete();
+        if ($voteToDelete) {
+            $voteToDelete->delete();
+            $this->$votes_count--;
         } else {
             throw new VoteNotFoundException;
         }
@@ -78,6 +83,7 @@ class Idea extends Model
         if ($this->isVotedByUser($user)) {
             throw new DublicateVoteException;
         }
+        $this->votes_count++;
         Vote::create([
             'user_id' => $user->id,
             'idea_id' => $this->id,
