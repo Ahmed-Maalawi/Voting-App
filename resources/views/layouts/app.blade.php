@@ -17,7 +17,7 @@
 </head>
 <body class="font-sans bg-gray-background text-gray-900 text-sm bg-gray-100">
 <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
-    <a href="#">
+    <a href="{{ route('idea.index') }}">
         <img src="{{ asset('img/logo.svg') }}" alt="logo">
     </a>
     <div class="flex items-center md:mt-0">
@@ -83,22 +83,10 @@
             </div>
         </div>
     </div>
-    <div class="w-full md:w-175 px-2 md:px-0">  <!-- style="max-width: 700px" -->
-        <nav class="flex item-center justify-between text-xs flex-col md:flex-row space-y-6 md:space-y-0 mt-6 md:mt-0">
-            <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
-                <li><a href="" class="border-b-4 pb-3 border-blue">All Ideas (78)</a></li>
-                <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">Considering
-                        (6)</a></li>
-                <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">In
-                        Progress (78)</a></li>
-            </ul>
 
-            <ul class="flex uppercase font-semibold border-b-4 pb-3 space-x-10">
-                <li><a href="" class="border-b-4 pb-3 border-blue">Implemented (78)</a></li>
-                <li><a href="" class="text-gray-400 hover:border-blue transition duration-150 ease-in border-b-4 pb-3">Closed
-                        (78)</a></li>
-            </ul>
-        </nav>
+
+    <div class="w-full md:w-175 px-2 md:px-0">  <!-- style="max-width: 700px" -->
+        <livewire:status-filters />
 
         <div class="mt-8">
             {{ $slot }}
