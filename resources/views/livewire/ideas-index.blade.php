@@ -10,11 +10,10 @@
         </div>
 
         <div class="w-full md:w-1/3">
-            <select name="other" id="other" class="w-full rounded-xl border-none px-4 py-2">
-                <option value="">other one</option>
-                <option value="">other one</option>
-                <option value="">other one</option>
-                <option value="">other one</option>
+            <select wire:model="filter" name="other_filter" id="other_filter" class="w-full rounded-xl border-none px-4 py-2">
+                <option value="No Filter" selected>No Filter</option>
+                <option value="Top Voted">Top Voted</option>
+                <option value="My Ideas">My Ideas</option>
             </select>
         </div>
 
@@ -36,7 +35,7 @@
             <livewire:idea-index
                 :key="$idea->id"
                 :idea="$idea"
-                :votesCount="$idea->votes_count"
+                :votesCount_="$idea->votes_count"
             />
         @endforeach
     </div> <!-- end ideas container-->
