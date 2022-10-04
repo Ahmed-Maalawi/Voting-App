@@ -25,19 +25,24 @@
                           d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
                 </svg>
             </div>
-            <input type="search" placeholder="Find an idea"
+            <input wire:model="search" type="search" placeholder="Find an idea"
                    class="w-full rounded-xl border-none bg-white px-4 py-2 pl-8 placeholder:text-gray-900">
         </div>
     </div>
 
     <div class="ideas-container space-y-6 my-6">
-        @foreach($ideas as $idea)
+        @forelse($ideas as $idea)
             <livewire:idea-index
                 :key="$idea->id"
                 :idea="$idea"
                 :votesCount_="$idea->votes_count"
             />
-        @endforeach
+        @empty
+            <div class="mx-auto w-70 mt-12">
+                <img src="{{ asset('img/no-ideas.svg') }}" alt="ideas_not_found" class="mx-auto img-fluid" style="mix-blend-mode: luminosity">
+               <div class="capitalize text-lg text-bold text-center text-gray-400 mt-6">no ideas were found...</div>
+            </div>
+        @endforelse
     </div> <!-- end ideas container-->
 
     {{--    start simple --}}
