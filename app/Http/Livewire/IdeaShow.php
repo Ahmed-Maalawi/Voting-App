@@ -40,6 +40,7 @@ class IdeaShow extends Component
             try {
 
                 $this->idea->vote(auth()->user());
+                
             } catch (DublicateVoteException $e) {
                 // do nothing
             }
