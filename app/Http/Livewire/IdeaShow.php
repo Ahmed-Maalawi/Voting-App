@@ -14,6 +14,8 @@ class IdeaShow extends Component
     public $hasVoted;
     public $user;
 
+    protected $listeners = ['statusWasUpdated'];
+
     public function mount(Idea $idea, $votesCount)
     {
         $this->idea = $idea;
@@ -40,7 +42,7 @@ class IdeaShow extends Component
             try {
 
                 $this->idea->vote(auth()->user());
-                
+
             } catch (DublicateVoteException $e) {
                 // do nothing
             }
@@ -49,6 +51,11 @@ class IdeaShow extends Component
 
         }
 
+    }
+
+    public function statusWasUpdated()
+    {
+        $this->idea->refresh();
     }
 
     public function render()

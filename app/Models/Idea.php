@@ -72,7 +72,7 @@ class Idea extends Model
 
         if ($voteToDelete) {
             $voteToDelete->delete();
-            $this->$votes_count--;
+            $this->votes_count--;
         } else {
             throw new VoteNotFoundException;
         }
