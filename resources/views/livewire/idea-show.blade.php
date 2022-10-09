@@ -7,7 +7,7 @@
                     <img src="{{ $idea->user->getAvatar() }}" alt="avatar"
                          class="w-14 h-14 rounded-xl">
                 </a>
-            </div>
+            </div> 
             <div class="md:mx-4 mx-2 w-full">
                 <h4 class="font-semibold text-xl md:mt-0 mt-2">{{ $idea->title }}</h4>
                 <div class="text-gray-600 mt-3">{{ $idea->description }}</div>
@@ -23,8 +23,7 @@
                     </div>
 
                     <div x-data="{isOpen: false}" class="flex items-center space-x-2 mt-4 md:mt-0">
-                        <div
-                            class="{{ $idea->status->classes }} text-center rounded-full uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none">
+                        <div class="text-center rounded-full uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none {{ $idea->status->classes }}">
                             {{ $idea->status->name }}
                         </div>
 

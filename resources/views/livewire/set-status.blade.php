@@ -48,7 +48,7 @@
                 <div>
                     <label for="radio-direct" class="inline-flex items-center">
                         <input wire:model="status" type="radio" name="radio-direct" value="4"
-                               class="bg-gray-200 text-yellow border-none">
+                               class="bg-gray-200 text-blue border-none">
                         <span class="ml-2">Implemented</span>
                     </label>
                 </div>
@@ -65,7 +65,6 @@
                           class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2"
                           placeholder="Add an update comment (optional)"></textarea>
             </div>
-
             <div class="block text-left font-semibold text-sm mt-2">
                 <div class="flex items-center justify-between space-x-3">
                     <button
@@ -81,10 +80,16 @@
 
                     <button
                         type="submit"
-                        class="w-1/2 h-8 text-xs bg-blue border-blue font-semibold text-white rounded-xl border hover:bg-blue-hover transition duration-150 ease-in">
-                        <span>Submit</span>
+                        class="w-1/2 h-8 text-xs bg-blue border-blue font-semibold text-white rounded-xl border hover:bg-blue-hover transition duration-150 ease-in disabled:opacity-50" disable>
+                        <span>update</span>
                     </button>
                 </div>
+            </div>
+            <div>
+                <label for="notify_voters" class="inline-flex items-center font-normal">
+                    <input wire:model="notifyAllVoters" id="notify_voters" name="notify_voters" type="checkbox" class="bg-gray-200 rounded">
+                    <span class="ml-2">notify all voters</span>
+                </label>
             </div>
         </form>
     </div>
