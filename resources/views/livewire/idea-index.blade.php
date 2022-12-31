@@ -60,7 +60,7 @@
                             class=" text-center rounded-full uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none {{ $idea->status->classes }}">
                             {{ $idea->status->name }}
                         </div>
-                        <button
+                        {{-- <button
                             @click="isOpen = !isOpen"
                             class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -76,7 +76,7 @@
                                 <li><a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
                                        href="#">Delete post</a></li>
                             </ul>
-                        </button>
+                        </button> --}}
                     </div>
 
                     <div class="mt-4 md:mt-0 block md:hidden flex items-center space-x-2 pr-4">

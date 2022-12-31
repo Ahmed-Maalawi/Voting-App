@@ -46,6 +46,8 @@
         <a href="#">
             <img class="w-10 h-10 rounded-full"
                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp"/>
+            {{-- <img class="w-10 h-10 rounded-full"
+            src="{{ auth()->getAvatar() }}"/> --}}
         </a>
     </div>
 </header>
