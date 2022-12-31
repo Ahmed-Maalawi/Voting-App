@@ -39,7 +39,14 @@
                             <ul x-cloak x-show="isOpen" @keydown.escape.window="isOpen = false" @click.outside="isOpen = false"
                                 class="absolute z-10 w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                 <li>
-                                    <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3" href="#">Edit Idea
+                                    <a
+                                        class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
+                                        href="#"
+                                        @click="
+                                            isOpen = false
+                                            $dispatch('custom-show-edit-modal')
+                                        "
+                                    >Edit Idea
                                     </a>
                                 </li>
                                 <li>

@@ -1,14 +1,36 @@
-<div class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div
+    x-cloak
+    x-data="{ open: false }"
+    x-show="open"
+    x-transition:enter="transition ease-in duration-350"
+    @keydown.escape.window="open = false"
+    @custom-show-edit-modal.window="open = true"
+    class="relative z-10"
+    aria-labelledby="modal-title"
+    role="dialog"
+    aria-modal="true"
+>
 
-    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    <div
+        x-show.transition.opacity="open"
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        aria-hidden="true"
+    >
+    </div>
 
-    <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div
+        x-transition:enter="transition ease-in duration-350"
+        x-transition:leave.duration.400ms
+        x-show="open"
+        class="fixed inset-0 z-10 overflow-y-auto">
         <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 sm:mb-24">
 
             <div
                 class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div class="absolute top-0 right-0 pt-4 pr-4">
-                    <button class="text-gray-600 hover:text-gray-900">
+                    <button
+                        @click="open = false"
+                        class="text-gray-600 hover:text-gray-900">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                             class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -64,7 +86,7 @@
                                 <span>Submit</span>
                             </button>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>

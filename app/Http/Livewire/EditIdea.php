@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class EditIdea extends Component
 {
+
+    public $idea;
     public function render()
     {
         return view('livewire.edit-idea');

@@ -13,7 +13,8 @@
 
     <livewire:idea-show :idea="$idea" :votesCount="$votesCount"/>
 
-    <livewire:edit-idea />
+    <livewire:edit-idea :idea="$idea" />
+
     <div class="comments-container relative space-y-6 ml-22 my-8 mt-1 pt-6">
         <div
             class="comment-container relative bg-white rounded-xl flex mt-4 hover:border-blue transition ease-in duration-150 hover:shadow-card">
