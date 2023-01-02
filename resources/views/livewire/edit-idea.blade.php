@@ -5,6 +5,11 @@
     x-transition:enter="transition ease-in duration-350"
     @keydown.escape.window="open = false"
     @custom-show-edit-modal.window="open = true"
+    x-init="
+        window.livewire.on('ideaWasUpdated', () => {
+            open = false
+        })
+    "
     class="relative z-10"
     aria-labelledby="modal-title"
     role="dialog"
@@ -43,7 +48,7 @@
                     <p class="text-xs text-center text-gray-500 mt-4 leading-8 px-6">
                         You have one hour to edit your idea from the time you created it.
                     </p>
-                    <form wire:submit.prevent="createIdea" action="" method="POST" class="space-y-4 px-2 py-4">
+                    <form wire:submit.prevent="updateIdea" action="#" method="POST" class="space-y-4 px-2 py-4">
                         <div>
                             <input wire:model.defer="title" type="text"
                                 class="w-full bg-gray-100 text-sm rounded-xl placeholder-gray-900 px-4 py-2 border-none"
@@ -55,9 +60,9 @@
                         <div>
                             <select wire:model.defer="category" name="category_add" id="category_add"
                                 class="w-full bg-gray-100 text-sm rounded-xl placeholder-gray-900 px-4 py-2 border-none">
-                                {{-- @foreach($categories as $category) --}}
-                                <option value="1">category 1</option>
-                                {{-- @endforeach --}}
+                                @foreach($categories as $category)
+                                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                @endforeach
                             </select>
                             @error('category')
                             <p class="text-red text-xs mt-1">{{ $message }}</p>
@@ -83,7 +88,7 @@
 
                             <button type="submit"
                                 class="w-1/2 h-8 text-xs bg-blue border-blue font-semibold text-white rounded-xl border hover:bg-blue-hover transition duration-150 ease-in">
-                                <span>Submit</span>
+                                <span>Update</span>
                             </button>
                         </div>
 
