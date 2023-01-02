@@ -4,8 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\Idea;
-use GuzzleHttp\Psr7\Response;
-use Illuminate\Http\Response as HttpResponse;
+use Illuminate\Http\Response;
 use Livewire\Component;
 
 class EditIdea extends Component
@@ -35,7 +34,7 @@ class EditIdea extends Component
     {
 
         if (auth()->guest() || auth()->user()->cannot('update', $this->idea)) {
-            abort(HttpResponse::HTTP_FORBIDDEN);
+            abort(Response::HTTP_FORBIDDEN);
         }
         $this->validate();
 

@@ -27,7 +27,7 @@
                             {{ $idea->status->name }}
                         </div>
 
-                        <div class="relative">
+                        {{-- <div class="relative">
                             <button @click="isOpen = !isOpen"
                                     class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -40,24 +40,35 @@
                                 class="absolute z-10 w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                 @can('update', $idea)
                                     <li>
-                                        <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3" href="#" @click="
-                                                                                isOpen = false
-                                                                                $dispatch('custom-show-edit-modal')
-                                                                            ">Edit Idea
+                                        <a
+                                            class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
+                                            href="#"
+                                            @click="
+                                                isOpen = false
+                                                $dispatch('custom-show-edit-modal')"
+                                            >
+                                            Edit Idea
                                         </a>
                                     </li>
                                 @endcan
-                                <li>
-                                    <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3" href="#">
-                                        Delete Idea
-                                    </a>
-                                </li>
+                                @can('delete', $idea)
+                                    <li>
+                                        <a href="#" @click="
+                                            isOpen = false
+                                            $dispatch('custom-show-delete-modal')
+                                            "
+                                            class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
+                                            href="#">
+                                            Delete Idea
+                                        </a>
+                                    </li>
+                                @endcan
                                 <li>
                                     <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3" href="#">mark as spam
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
