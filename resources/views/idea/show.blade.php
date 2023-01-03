@@ -13,13 +13,19 @@
 
     <livewire:idea-show :idea="$idea" :votesCount="$votesCount"/>
 
-    @can('update', $idea)
+    {{-- @can('update', $idea) --}}
         <livewire:edit-idea :idea="$idea" />
-    @endcan
+    {{-- @endcan --}}
 
-    @can('delete', $idea)
+    {{-- @can('delete', $idea) --}}
         <livewire:delete-idea :idea="$idea" />
-    @endcan
+    {{-- @endcan --}}
+    {{-- @can('delete', $idea) --}}
+        <livewire:mark-idea-as-spam :idea="$idea" />
+    {{-- @endcan --}}
+    {{-- @can('delete', $idea) --}}
+        <livewire:mark-idea-not-spam :idea="$idea" />
+    {{-- @endcan --}}
 
     <div class="comments-container relative space-y-6 ml-22 my-8 mt-1 pt-6">
         <div

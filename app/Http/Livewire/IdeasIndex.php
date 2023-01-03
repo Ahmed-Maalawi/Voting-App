@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\WithPagination;
 use App\Models\Category;
-use App\Models\Idea;
+use Livewire\Component;
 use App\Models\Status;
 use App\Models\Vote;
-use Livewire\Component;
-use Livewire\WithPagination;
+use App\Models\Idea;
 
 class IdeasIndex extends Component
 {
@@ -86,6 +86,9 @@ class IdeasIndex extends Component
             })
             ->when($this->category && $this->category !== 'All Category', function($query) use ($categories) {
                 return $query->where('category_id', $categories->pluck('id', 'name')->get($this->category));
+            })
+            ->when($this->filter && $this->filter === 'Spam Ideas', function($query) {
+                return $query->where('spam_reports', '>', 0)->orderByDesc('spam_reports');
             })
             ->when($this->filter && $this->filter === 'Top Voted', function($query) {
                 return $query->orderByDesc('votes_count');

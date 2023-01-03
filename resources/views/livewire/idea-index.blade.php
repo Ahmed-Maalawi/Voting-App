@@ -10,7 +10,7 @@
             if(! ignores.includes(target) ) {
                 clicked.closest('.idea-container').querySelector('.idea-link').click()
             }
-            "
+        "
     class="ideas-container hover:shadow-card bg-white rounded-xl flex transition ease-in duration-150 cursor-pointer">
     <div class=" hidden md:block border-r border-gray-100 px-5 py-8">
         <div class="text-center">
@@ -44,6 +44,12 @@
             <h4 class="font-semibold text-xl mt-2 md:mt-0">
                 <a href="{{ route('idea.show', $idea) }}" class="hover:underline">{{ $idea->title }}</a>
             </h4>
+            @admin
+                @if ($idea->spam_reports > 0)
+                    <div class="text-red mb-2">Spam Reports: {{ $idea->spam_reports }}</div>
+                @endif
+
+            @endadmin
             <div class="text-gray-600 mt-3 line-clamp-3">{{ $idea->description }}</div>
             <div class="flex flex-col md:flex-row justify-between md:items-center mt-6">
                 <div class="flex items-center text-xs text-gray-400 font-semibold md:space-x-2">
