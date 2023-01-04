@@ -3,7 +3,7 @@
 @endcan
 
 @can('delete', $idea)
-<livewire:delete-idea :idea="$idea" />
+    <livewire:delete-idea :idea="$idea" />
 @endcan
 
 @auth

@@ -38,7 +38,7 @@
             <livewire:idea-index
                 :key="$idea->id"
                 :idea="$idea"
-                :votesCount_="$idea->votes_count"
+                :votesCount_="$idea->votes->count()"
             />
         @empty
             <div class="mx-auto w-70 mt-12">

@@ -46,6 +46,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Idea::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     public function getAvatar()
     {
@@ -73,8 +77,8 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return in_array($this->email, [
-            'ahmed@gmail.com',
+        return in_array( $this->email, [
+            'admin@admin.com',
         ]);
     }
 }

@@ -1,16 +1,15 @@
 <div
     x-data
     @click="
+        let clicked = $event.target
+        let target = clicked.tagName.toLowerCase()
 
-            let clicked = $event.target
-            let target = clicked.tagName.toLowerCase()
+        let ignores = ['button', 'svg', 'a', 'path']
 
-            let ignores = ['button', 'svg', 'a', 'path']
-
-            if(! ignores.includes(target) ) {
-                clicked.closest('.idea-container').querySelector('.idea-link').click()
-            }
-        "
+        if(! ignores.includes(target) ) {
+            clicked.closest('.idea-container').querySelector('.idea-link').click()
+        }
+    "
     class="ideas-container hover:shadow-card bg-white rounded-xl flex transition ease-in duration-150 cursor-pointer">
     <div class=" hidden md:block border-r border-gray-100 px-5 py-8">
         <div class="text-center">
@@ -57,7 +56,7 @@
                     <div>&bull;</div>
                     <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
-                    <div class="text-gray-600">3 comments</div>
+                    <div class="text-gray-600">{{ $idea->comments_count }} comments</div>
                 </div>
                 <div class="flex items-center justify-between space-x-2 mt-4 md:mt-0" x-data="{isOpen: false}">
 

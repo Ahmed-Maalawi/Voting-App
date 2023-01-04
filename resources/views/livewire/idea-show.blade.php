@@ -24,7 +24,7 @@
                         <div>&bull;</div>
                         <div>{{ $idea->category->name }}</div>
                         <div>&bull;</div>
-                        <div class="text-gray-600">3 comments</div>
+                        <div class="text-gray-600">{{ $idea->comments->count() }} comments</div>
                     </div>
 
                     <div x-data="{isOpen: false}" class="flex items-center space-x-2 mt-4 md:mt-0">
@@ -45,12 +45,14 @@
                                 <ul x-cloak x-show="isOpen" @keydown.escape.window="isOpen = false" @click.outside="isOpen = false"
                                     class="absolute z-10 w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left md:ml-8 top-8 md:top-6 right-0 md:left-0">
 
-                                    @admin
+{{--                                    @admin--}}
                                         @can('update', $idea)
                                             <li>
-                                                <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3" href="#" @click="
-                                                                                        isOpen = false
-                                                                                        $dispatch('custom-show-edit-modal')">
+                                                <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3" href="#"
+                                                   @click="
+                                                    isOpen = false
+                                                    $dispatch('custom-show-edit-modal')"
+                                                >
                                                     Edit Idea
                                                 </a>
                                             </li>
@@ -83,7 +85,7 @@
                                             >mark as no spam
                                             </a>
                                         </li>
-                                    @endadmin
+{{--                                    @endadmin--}}
                                 </ul>
                             </div>
                         @endauth

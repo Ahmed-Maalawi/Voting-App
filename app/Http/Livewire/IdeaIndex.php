@@ -13,10 +13,10 @@ class IdeaIndex extends Component
     public $votesCount;
     public $hasVoted;
 
-    public function mount(Idea $idea, $votesCount_)
+    public function mount(Idea $idea, $votesCount)
     {
         $this->idea = $idea;
-        $this->votesCount = $votesCount_;
+        $this->votesCount = $votesCount;
         $this->hasVoted = $idea->voted_by_user;
 
     }
