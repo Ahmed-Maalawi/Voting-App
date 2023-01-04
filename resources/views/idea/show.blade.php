@@ -16,9 +16,7 @@
         :votesCount="$votesCount"
     />
 
-{{--  --------------------------   notification section ------------- --}}
     <x-notification-success />
-
 
     <x-modals-container :idea="$idea" />
 

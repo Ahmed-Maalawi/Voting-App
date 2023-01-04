@@ -46,7 +46,7 @@ class EditIdea extends Component
         ]);
 
 
-        $this->emit('ideaWasUpdated');
+        $this->emit('ideaWasUpdated', 'Idea was updated successfully!');
     }
 
     public function render()
