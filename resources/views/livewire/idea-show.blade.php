@@ -97,12 +97,8 @@
 
 
     <div class="buttons-container flex flex-col md:flex-row items-center justify-between mt-4">
-        <div class="flex  items-center space-x-2 ml-4" x-data="{replay_open: false}">
-            <button @click="replay_open = !replay_open"
-                    type="button"
-                    class="h-11 w-36 text-xs bg-blue border-blue font-semibold text-white rounded-xl border hover:bg-blue-hover transition duration-150 ease-in px-6 py-3 flex justify-center items-center">
-                <span>Reply</span>
-            </button>
+        <div class="flex flex-col md:flex-row items-center space-x-2 ml-4" x-data="{replay_open: false}">
+            <livewire:add-comment :idea="$idea" />
             @admin
                 <livewire:set-status :idea="$idea" />
             @endadmin

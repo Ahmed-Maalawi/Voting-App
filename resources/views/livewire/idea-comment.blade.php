@@ -17,6 +17,11 @@
             <div class="flex justify-between items-center mt-6">
                 <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
                     <div class="font-bold text-blue">{{ $comment->user->name }}</div>
+                    <div>&bull;</div>
+                    @if($ideaUserId === $comment->user->id)
+                        <div class="rounded-full border bg-gray-100 px-3 py-1">OP</div>
+                        <div>&bull;</div>
+                    @endif
                     <div class="ml-1">{{ $comment->created_at->diffForHumans() }}</div>
                 </div>
             </div>

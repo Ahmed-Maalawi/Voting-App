@@ -30,6 +30,10 @@
                 window.livewire.on('ideaWasMarkedAsNotSpam', message => {
                     showNotification(message)
                 })
+
+                window.livewire.on('commentWasPosted', message => {
+                    showNotification(message)
+                })
             @endif
         "
         x-cloak
