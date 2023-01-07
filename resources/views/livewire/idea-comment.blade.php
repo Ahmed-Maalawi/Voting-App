@@ -1,5 +1,5 @@
 <div
-    class="comment-container   relative bg-white rounded-xl flex mt-4 hover:border-blue transition ease-in duration-150 hover:shadow-card"> <!-- is-admin => class -->
+    class="comment-container relative bg-white rounded-xl flex mt-4 hover:border-blue transition ease-in duration-500 hover:shadow-card"> <!-- is-admin => class -->
 
     <div class="flex flex-1 px-2 py-6">
         <div class="flex-none">

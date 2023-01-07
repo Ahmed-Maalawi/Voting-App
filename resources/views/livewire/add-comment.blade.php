@@ -1,14 +1,24 @@
 <div
     x-data="{ isOpen: false }"
     x-init="
+
         Livewire.on('commentWasPosted', () => {
             isOpen = false
         })
+
+         Livewire.hook('message.processed', (message, component) => {
+            if( message.updateQueue[0].payload.event === 'commentWasPosted' && message.component.fingerprint.name === 'idea-comments') {
+                console.log('TEST')
+                const lastComment = document.querySelector('.comment-container:last-child')
+                lastComment.scrollIntoView( {behavior:'smooth'});
+                lastComment.classList.add('bg-green-50')
+                setTimeout(() => {
+                    lastComment.classList.remove('bg-green-50')
+                }, 5000)
+            }
+         })
     "
 {{--    x-init="--}}
-{{--        Livewire.on('commentWasAdded', () => {--}}
-{{--            isOpen = false--}}
-{{--        })--}}
 {{--        Livewire.hook('message.processed', (message, component) => {--}}
 {{--            --}}{{-- Pagination --}}
 {{--            if (['gotoPage', 'previousPage', 'nextPage'].includes(message.updateQueue[0].method)) {--}}
@@ -41,9 +51,9 @@
         type="button"
         @click="
             isOpen = !isOpen
-{{--            if (isOpen) {--}}
-{{--                $nextTick(() => $refs.comment.focus())--}}
-{{--            }--}}
+            if (isOpen) {
+                $nextTick(() => $refs.comment.focus())
+            }
         "
         class="flex items-center justify-center h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
     >
