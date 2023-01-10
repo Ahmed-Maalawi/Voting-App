@@ -12,7 +12,6 @@ class Idea extends Model
 {
     use HasFactory, Sluggable;
 
-    const PAGINATION_COUNT = 10;
 
     const CATEGORY_TUTORIAL_REQUEST = 'Tutorial Request';
     const CATEGORY_LARACASTS_FEATURE = 'Laracasts Feature';
@@ -20,7 +19,7 @@ class Idea extends Model
     protected $guarded = [];
     public $votes_count;
 
-
+    protected $perPage = 10;
 
     public function comments()
     {

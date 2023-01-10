@@ -1,4 +1,5 @@
 <div
+    class="relative"
     x-data="{ isOpen: false }"
     x-init="
 
@@ -7,6 +8,13 @@
         })
 
          Livewire.hook('message.processed', (message, component) => {
+
+            if( ['gotoPage','nextPage','previousPage',].includes(message.updateQueue[0].method) ) {
+                const firstComment = document.querySelector('.comment-container:first-child')
+                firstComment.scrollIntoView( {behavior:'smooth'});
+            }
+
+
             if( message.updateQueue[0].payload.event === 'commentWasPosted' && message.component.fingerprint.name === 'idea-comments') {
                 console.log('TEST')
                 const lastComment = document.querySelector('.comment-container:last-child')
@@ -18,34 +26,6 @@
             }
          })
     "
-{{--    x-init="--}}
-{{--        Livewire.hook('message.processed', (message, component) => {--}}
-{{--            --}}{{-- Pagination --}}
-{{--            if (['gotoPage', 'previousPage', 'nextPage'].includes(message.updateQueue[0].method)) {--}}
-{{--                const firstComment = document.querySelector('.comment-container:first-child')--}}
-{{--                firstComment.scrollIntoView({ behavior: 'smooth'})--}}
-{{--            }--}}
-{{--            --}}{{-- Adding Comment --}}
-{{--            if (['commentWasAdded', 'statusWasUpdated'].includes(message.updateQueue[0].payload.event)--}}
-{{--             && message.component.fingerprint.name === 'idea-comments') {--}}
-{{--                const lastComment = document.querySelector('.comment-container:last-child')--}}
-{{--                lastComment.scrollIntoView({ behavior: 'smooth'})--}}
-{{--                lastComment.classList.add('bg-green-50')--}}
-{{--                setTimeout(() => {--}}
-{{--                    lastComment.classList.remove('bg-green-50')--}}
-{{--                }, 5000)--}}
-{{--            }--}}
-{{--        })--}}
-{{--        @if (session('scrollToComment'))--}}
-{{--            const commentToScrollTo = document.querySelector('#comment-{{ session('scrollToComment') }}')--}}
-{{--            commentToScrollTo.scrollIntoView({ behavior: 'smooth'})--}}
-{{--            commentToScrollTo.classList.add('bg-green-50')--}}
-{{--            setTimeout(() => {--}}
-{{--                commentToScrollTo.classList.remove('bg-green-50')--}}
-{{--            }, 5000)--}}
-{{--        @endif--}}
-{{--    "--}}
-    class="relative"
 >
     <button
         type="button"
