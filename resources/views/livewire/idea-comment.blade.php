@@ -52,19 +52,23 @@
                                     </a>
                                 </li>
                             @endcan
-                            <li>
-                                <a
-                                    href="#"
-                                    @click="
-                                        isOpen = false
-                                        $dispatch('custom-show-delete-modal')
-                                    "
-                                    class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
-                                    href="#"
-                                >
-                                    Delete Comment
-                                </a>
-                            </li>
+
+                            @can('delete', $comment)
+                                <li>
+                                    <a
+                                        href="#"
+                                        @click="
+                                            isOpen = false
+                                            Livewire.emit('setDeleteComment', {{ $comment->id }})
+    {{--                                        $dispatch('custom-show-delete-modal')--}}
+                                        "
+                                        class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
+                                        href="#"
+                                    >
+                                        Delete Comment
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </div>
                 @endauth

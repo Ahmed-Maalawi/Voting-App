@@ -1,6 +1,6 @@
 @props([
-    'event-to-open-modal',
-    'event-to-close-modal',
+    'event-to-open-modal' => null,
+    'livewire-event-to-close-modal' => null,
     'modal-title',
     'modal-description',
     'modal-confirm-button-text',
@@ -12,14 +12,24 @@
     x-data="{ openDelete: false}"
     x-show="openDelete"
     @keydown.escape.window="openDelete = false"
-    {{ '@'.$eventToOpenModal }}.window="
-        openDelete = true
-        $nextTick(() => $refs.confirmButton.focus())
-    "
+    @if(! $eventToOpenModal)
+        {{ '@'.$eventToOpenModal }}.window="
+            openDelete = true
+            $nextTick(() => $refs.confirmButton.focus())
+        "
+    @endif
+
     x-init="
-            window.livewire.on('{{ $eventToCloseModal }}', () => {
-            openDelete = false
-        })
+       Livewire.on('{{ $eventToCloseModal }}', () => {
+           openDelete = false
+       })
+
+       @if($livewireEventToCloseModal)
+            Livewire.on('{{ $eventToCloseModal }}', () => {
+                openDelete = true
+                $nextTick(() => $refs.confirmButton.focus())
+            })
+       @endif
     "
     '@'.{{ $eventToOpenModal }}.window="openDelete = true"
     class="relative z-30"
