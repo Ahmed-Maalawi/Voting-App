@@ -1,4 +1,4 @@
-@can('update', $idea)
+@can('update', $idea)idea
 <livewire:edit-idea :idea="$idea" />
 @endcan
 
@@ -14,3 +14,7 @@
 @admin
 <livewire:mark-idea-not-spam :idea="$idea" />
 @endadmin
+
+@auth
+<livewire:edit-comment />
+@endauth

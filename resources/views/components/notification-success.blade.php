@@ -34,6 +34,10 @@
                 window.livewire.on('commentWasPosted', message => {
                     showNotification(message)
                 })
+
+                window.livewire.on('commentWasUpdated', message => {
+                    showNotification(message)
+                })
             @endif
         "
         x-cloak
