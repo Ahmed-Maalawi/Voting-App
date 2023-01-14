@@ -42,6 +42,10 @@
                 window.livewire.on('commentWasDeleted', message => {
                     showNotification(message)
                 })
+
+                window.livewire.on('commentWasMarkAsSpam', message => {
+                    showNotification(message)
+                })
             @endif
         "
         x-cloak
@@ -55,20 +59,20 @@
 
         @keydown.escape.window="isOpen = false"
 
-        class="z-30 flex justify-between max-w-xs sm:max-w-sm  w-full fixed bottom-0 right-0 bg-white rounded-xl shadow-lg hover:shadow-xl border px-6 py-5 mx-2 sm:mx-6 my-8">
-        <div class="font-semibold text-gray-500 text-base text-left">
+        class="fixed bottom-0 right-0 z-30 flex justify-between w-full max-w-xs px-6 py-5 mx-2 my-8 bg-white border shadow-lg sm:max-w-sm rounded-xl hover:shadow-xl sm:mx-6">
+        <div class="text-base font-semibold text-left text-gray-500">
             <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-green">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                 </svg>
-                <div class="ml-2 font-semibold text-gray-500 text-sm sm:text-base" x-text="messageToDisplay"></div>
+                <div class="ml-2 text-sm font-semibold text-gray-500 sm:text-base" x-text="messageToDisplay"></div>
             </div>
         </div>
 
 
         <button
             @click="isOpen = false"
-            class="text-gray-400 hover:text-gray-600 text-right ml-4 text-xs">
+            class="ml-4 text-xs text-right text-gray-400 hover:text-gray-600">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>

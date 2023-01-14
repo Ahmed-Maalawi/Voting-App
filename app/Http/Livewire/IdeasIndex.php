@@ -80,8 +80,7 @@ class IdeasIndex extends Component
 
 
         return view('livewire.ideas-index', [
-            'ideas' => Idea::with('user', 'category', 'status')
-            ->when($this->status && $this->status !== 'All', function($query) use ($statuses) {
+            'ideas' => Idea::with('user', 'category', 'status')->when($this->status && $this->status !== 'All', function($query) use ($statuses) {
                 return $query->where('status_id', $statuses->get($this->status));
             })
             ->when($this->category && $this->category !== 'All Category', function($query) use ($categories) {
@@ -92,6 +91,11 @@ class IdeasIndex extends Component
             })
             ->when($this->filter && $this->filter === 'Top Voted', function($query) {
                 return $query->orderByDesc('votes_count');
+            })
+            ->when($this->filter && $this->filter === 'Spam Comments', function($query) {
+                return $query->whereHas('comments', function ($query) {
+                    $query->where('spam_reports', '>', 0)->orderByDesc('spam_reports');
+                });
             })
             ->when($this->filter && $this->filter === 'My Ideas', function($query) {
                 return $query->where('user_id', auth()->id());

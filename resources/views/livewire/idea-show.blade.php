@@ -8,7 +8,7 @@
                          class="w-14 h-14 rounded-xl">
                 </a>
             </div>
-            <div class="md:mx-4 mx-2 w-full">
+        <div class="md:mx-4 mx-2 w-full">
                 <h4 class="font-semibold text-xl md:mt-0 mt-2">{{ $idea->title }}</h4>
                 @admin
                     @if ($idea->spam_reports > 0)
@@ -75,6 +75,7 @@
                                             ">mark as spam
                                             </a>
                                         </li>
+                                    @admin
                                         <li>
                                             <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
                                                 href="#"
@@ -85,7 +86,7 @@
                                             >mark as no spam
                                             </a>
                                         </li>
-{{--                                    @endadmin--}}
+                                   @endadmin
                                 </ul>
                             </div>
                         @endauth

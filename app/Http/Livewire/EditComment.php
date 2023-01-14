@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class EditComment extends Component
 {
-    public Comment $comment;
+    public ?Comment $comment;
     public string $body;
 
     protected $listeners = ['setEditComment'];
@@ -38,6 +38,7 @@ class EditComment extends Component
 
         $this->emit('commentWasUpdated', 'comment was updated');
     }
+    
     public function render()
     {
         return view('livewire.edit-comment');

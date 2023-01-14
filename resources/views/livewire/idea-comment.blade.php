@@ -1,5 +1,5 @@
-<div
-    class="comment-container relative bg-white rounded-xl flex mt-4 hover:border-blue transition ease-in duration-500 hover:shadow-card"> <!-- is-admin => class -->
+    <div
+    class="relative flex mt-4 transition duration-500 ease-in bg-white comment-container rounded-xl hover:border-blue hover:shadow-card"> <!-- is-admin => class -->
 
     <div class="flex flex-1 px-2 py-6">
         <div class="flex-none">
@@ -7,19 +7,24 @@
                 <img src="{{ $comment->user->getAvatar() }}" alt="avatar"
                      class="w-14 h-14 rounded-xl">
             </a>
-{{--            <div class="text-center text-blue text-xxs uppercase mt-1 font-bold">{{ $comment->user->name }}</div>--}}
+{{--            <div class="mt-1 font-bold text-center uppercase text-blue text-xxs">{{ $comment->user->name }}</div>--}}
         </div>
-        <div class="mx-4 w-full">
-{{--            <h4 class="font-semibold text-xl">--}}
+        <div class="w-full mx-4">
+            @admin
+                @if($comment->spam_reports > 0)
+                    <div class="text-red mt-2">spam reports: {{ $comment->spam_reports }}</div>
+                @endif
+            @endadmin
+{{--            <h4 class="text-xl font-semibold">--}}
 {{--                <a href="" class="hover:underline">{{ $comment->user->name }}</a>--}}
 {{--            </h4>--}}
-            <div class="text-gray-600 mt-2 line-clamp-3">{{ $comment->body }}</div>
-            <div class="flex justify-between items-center mt-6">
-                <div class="flex items-center text-xs text-gray-400 font-semibold space-x-2">
+            <div class="mt-2 text-gray-600 line-clamp-3">{{ $comment->body }}</div>
+            <div class="flex items-center justify-between mt-6">
+                <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
                     <div class="font-bold text-blue">{{ $comment->user->name }}</div>
                     <div>&bull;</div>
                     @if($ideaUserId === $comment->user->id)
-                        <div class="rounded-full border bg-gray-100 px-3 py-1">OP</div>
+                        <div class="px-3 py-1 bg-gray-100 border rounded-full">OP</div>
                         <div>&bull;</div>
                     @endif
                     <div class="ml-1">{{ $comment->created_at->diffForHumans() }}</div>
@@ -28,25 +33,26 @@
 
                 @auth
                     <div class="relative"
-                         x-data="{ isOpen : false}"
+                        x-data="{ isOpen : false}"
                     >
                         <button @click="isOpen = !isOpen"
-                                class="text-center rounded-full bg-gray-100 hover:bg-gray-200 border text-xxs h-7 leading-none transition duration-150 ease-in px-4 py-2 relative">
+                                class="relative px-4 py-2 leading-none text-center transition duration-150 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 text-xxs h-7">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-three-dots text-gray-400" viewBox="0 0 16 16">
+                                 class="text-gray-400 bi bi-three-dots" viewBox="0 0 16 16">
                                 <path
                                     d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                             </svg>
                         </button>
                         <ul x-cloak x-show="isOpen" @keydown.escape.window="isOpen = false" @click.outside="isOpen = false"
-                            class="absolute z-10 w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 capitalize text-left md:ml-8 top-8 md:top-6 right-0 md:left-0">
+                            class="absolute right-0 z-10 py-3 font-semibold text-left capitalize bg-white w-44 shadow-dialog rounded-xl md:ml-8 top-8 md:top-6 md:left-0">
                             @can('update', $comment)
                                 <li>
-                                    <a class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3" href="#"
-                                       @click="
-                                       isOpen = false
-                                       Livewire.emit('setEditComment', {{ $comment->id }})
-                                   "
+                                    <a
+                                        class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300" href="#"
+                                        @click="
+                                            isOpen = false
+                                            Livewire.emit('setEditComment', {{ $comment->id }})
+                                        "
                                     >
                                         Edit Comment
                                     </a>
@@ -60,15 +66,40 @@
                                         @click="
                                             isOpen = false
                                             Livewire.emit('setDeleteComment', {{ $comment->id }})
-    {{--                                        $dispatch('custom-show-delete-modal')--}}
                                         "
-                                        class="hover:bg-gray-300 block transition ease-in duration-150 px-5 py-3"
+                                        class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300"
                                         href="#"
                                     >
                                         Delete Comment
                                     </a>
                                 </li>
                             @endcan
+                            @auth
+                                <li>
+                                    <a
+                                        href="#"
+                                        @click="
+                                            isOpen = false
+                                            Livewire.emit('setMarkAsSpamComment', {{ $comment->id }})
+                                        "
+                                        class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300"
+                                        href="#"
+                                    >
+                                        mark as spam
+                                    </a>
+                                </li>
+                            @endauth
+
+                            <li>
+                                <a href="#" @click="
+                                        isOpen = false
+                                        Livewire.emit('setMarkAsNoSpamComment', {{ $comment->id }})
+                                    "
+                                    class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300"
+                                >
+                                    mark as spam
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 @endauth

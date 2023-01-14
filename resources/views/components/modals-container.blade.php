@@ -1,5 +1,5 @@
 @can('update', $idea)idea
-<livewire:edit-idea :idea="$idea" />
+    <livewire:edit-idea :idea="$idea" />
 @endcan
 
 @can('delete', $idea)
@@ -7,18 +7,22 @@
 @endcan
 
 @auth
-<livewire:mark-idea-as-spam :idea="$idea" />
+    <livewire:mark-idea-as-spam :idea="$idea" />
 @endauth
 
 
 @admin
-<livewire:mark-idea-not-spam :idea="$idea" />
+    <livewire:mark-idea-not-spam :idea="$idea" />
 @endadmin
 
 @auth
-<livewire:edit-comment />
+    <livewire:edit-comment />
 @endauth
 
 @auth
     <livewire:delete-comment />
+@endauth
+
+@auth
+    <livewire:mark-comment-as-spam />
 @endauth
