@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Idea;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,6 +23,7 @@ class CommentFactory extends Factory
             'body' => fake()->paragraph(5),
             'user_id' => User::factory(),
             'idea_id' => Idea::factory(),
+            'status_id' => Status::factory(),
         ];
     }
 
@@ -30,6 +32,7 @@ class CommentFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'user_id' => fake()->numberBetween(1, 20),
+                'status_id' => 1,
             ];
         });
     }

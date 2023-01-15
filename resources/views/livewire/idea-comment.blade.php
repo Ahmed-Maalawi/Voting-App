@@ -1,5 +1,5 @@
     <div
-    class="relative flex mt-4 transition duration-500 ease-in bg-white comment-container rounded-xl hover:border-blue hover:shadow-card"> <!-- is-admin => class -->
+        class="@if($comment->is_status_update) {{'status-'.Str::kebab($comment->status->name) }} @endif {{ ($comment->is_status_update)? 'is-status-update' : '' }} relative flex mt-4 transition duration-500 ease-in bg-white comment-container rounded-xl hover:border-blue hover:shadow-card"> <!-- is-admin => class -->
 
     <div class="flex flex-1 px-2 py-6">
         <div class="flex-none">
@@ -15,13 +15,17 @@
                     <div class="mt-2 text-red">spam reports: {{ $comment->spam_reports }}</div>
                 @endif
             @endadmin
-{{--            <h4 class="text-xl font-semibold">--}}
-{{--                <a href="" class="hover:underline">{{ $comment->user->name }}</a>--}}
-{{--            </h4>--}}
-            <div class="mt-2 text-gray-600 line-clamp-3">{{ $comment->body }}</div>
+
+            @if($comment->is_status_update)
+                <h4 class="text-xl font-semibold mt-3">
+                    Status Changed to "{{ $comment->status->name }}"
+                </h4>
+            @endif
+
+            <div class="mt-2 text-gray-600">{{ $comment->body }}</div> <!-- line-clamp-3 -->
             <div class="flex items-center justify-between mt-6">
                 <div class="flex items-center space-x-2 text-xs font-semibold text-gray-400">
-                    <div class="font-bold text-blue">{{ $comment->user->name }}</div>
+                    <div class="font-bold {{ ($comment->is_status_update)? 'text-blue' : 'text-black'}}">{{ $comment->user->name }}</div>
                     <div>&bull;</div>
                     @if($ideaUserId === $comment->user->id)
                         <div class="px-3 py-1 bg-gray-100 border rounded-full">OP</div>
@@ -68,7 +72,6 @@
                                             Livewire.emit('setDeleteComment', {{ $comment->id }})
                                         "
                                         class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300"
-                                        href="#"
                                     >
                                         Delete Comment
                                     </a>
@@ -83,7 +86,6 @@
                                             Livewire.emit('setMarkAsSpamComment', {{ $comment->id }})
                                         "
                                         class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300"
-                                        href="#"
                                     >
                                         mark as spam
                                     </a>

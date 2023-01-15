@@ -2,14 +2,22 @@
         @if($comments->isNotEmpty())
             <div class="comments-container relative space-y-6 ml-22 my-8 mt-1 pt-6">
 
-            @foreach($comments as $comment)
-                <livewire:idea-comment
-                    :key="$comment->id"
-                    :comment="$comment"
-                    :ideaUserId="$idea->user->id"
-                />
-           @endforeach
-            </div> <!-- end comments container -->
+                @foreach($comments as $comment)
+                    <livewire:idea-comment
+                        :key="$comment->id"
+                        :comment="$comment"
+                        :ideaUserId="$idea->user->id"
+                    />
+                @endforeach
+
+
+
+                {{-- ---------------------- add admin comment --------------------- --}}
+
+                
+
+            </div>
+            <!-- end comments container -->
 
             <div class="my-8 md:ml-22">
                 {{ $comments->onEachSide(1)->links() }}

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->text('body');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('idea_id')->constrained('ideas')->cascadeOnDelete();
+            $table->foreignId('status_id')->default(1)->constrained('statuses')->cascadeOnDelete();
             $table->integer('spam_reports')->default(0);
+            $table->boolean('is_status_update')->default(false);
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@
                     </div>
 
                     <div x-data="{isOpen: false}" class="flex items-center space-x-2 mt-4 md:mt-0">
-                        <div class="text-center rounded-full uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none {{ $idea->status->classes }}">
+                        <div class="text-center rounded-full uppercase text-xxs font-bold w-28 h-7 px-4 py-2 leading-none {{ 'status-'.Str::kebab($idea->status->name) }}"> <!-- $idea->status->classes -->
                             {{ $idea->status->name }}
                         </div>
 
