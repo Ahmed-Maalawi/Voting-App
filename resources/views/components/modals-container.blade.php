@@ -26,3 +26,7 @@
 @auth
     <livewire:mark-comment-as-spam />
 @endauth
+
+@admin
+    <livewire:comment-mark-as-not-spam />
+@endadmin

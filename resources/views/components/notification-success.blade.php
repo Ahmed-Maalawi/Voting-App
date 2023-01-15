@@ -46,6 +46,10 @@
                 window.livewire.on('commentWasMarkAsSpam', message => {
                     showNotification(message)
                 })
+
+                window.livewire.on('commentWasMarkAsNotSpam', message => {
+                    showNotification(message)
+                })
             @endif
         "
         x-cloak

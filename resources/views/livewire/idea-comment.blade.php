@@ -12,7 +12,7 @@
         <div class="w-full mx-4">
             @admin
                 @if($comment->spam_reports > 0)
-                    <div class="text-red mt-2">spam reports: {{ $comment->spam_reports }}</div>
+                    <div class="mt-2 text-red">spam reports: {{ $comment->spam_reports }}</div>
                 @endif
             @endadmin
 {{--            <h4 class="text-xl font-semibold">--}}
@@ -90,16 +90,19 @@
                                 </li>
                             @endauth
 
-                            <li>
-                                <a href="#" @click="
+                            @admin
+                                <li>
+                                    <a
+                                        href="#" @click="
                                         isOpen = false
-                                        Livewire.emit('setMarkAsNoSpamComment', {{ $comment->id }})
-                                    "
-                                    class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300"
-                                >
-                                    mark as spam
-                                </a>
-                            </li>
+                                        Livewire.emit('setMarkAsNotSpamComment', {{ $comment->id }})
+                                        "
+                                        class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-300"
+                                    >
+                                        mark as not spam
+                                    </a>
+                                </li>
+                            @endadmin
                         </ul>
                     </div>
                 @endauth
