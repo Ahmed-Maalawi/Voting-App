@@ -56,7 +56,7 @@
                     <div>&bull;</div>
                     <div>{{ $idea->category->name }}</div>
                     <div>&bull;</div>
-                    <div class="text-gray-600">{{ $idea->comments_count }} comments</div>
+                    <div wire:ignore class="text-gray-600">{{ $idea->comments_count }} comments</div>
                 </div>
                 <div class="flex items-center justify-between space-x-2 mt-4 md:mt-0" x-data="{isOpen: false}">
 

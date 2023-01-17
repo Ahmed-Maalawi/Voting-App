@@ -50,6 +50,10 @@
                 window.livewire.on('commentWasMarkAsNotSpam', message => {
                     showNotification(message)
                 })
+
+                window.livewire.on('statusWasUpdated', message => {
+                    showNotification(message)
+                })
             @endif
         "
         x-cloak

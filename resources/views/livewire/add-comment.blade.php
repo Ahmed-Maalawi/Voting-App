@@ -15,14 +15,15 @@
             }
 
 
-            if( message.updateQueue[0].payload.event === 'commentWasPosted' && message.component.fingerprint.name === 'idea-comments') {
-                console.log('TEST')
-                const lastComment = document.querySelector('.comment-container:last-child')
-                lastComment.scrollIntoView( {behavior:'smooth'});
-                lastComment.classList.add('bg-green-50')
-                setTimeout(() => {
-                    lastComment.classList.remove('bg-green-50')
-                }, 5000)
+            if( ['commentWasPosted', 'statusWasUpdated'].includes(message.updateQueue[0].payload.event)
+                && message.component.fingerprint.name === 'idea-comments') {
+                    console.log('TEST')
+                    const lastComment = document.querySelector('.comment-container:last-child')
+                    lastComment.scrollIntoView( {behavior:'smooth'});
+                    lastComment.classList.add('bg-green-50')
+                    setTimeout(() => {
+                        lastComment.classList.remove('bg-green-50')
+                    }, 5000)
             }
          })
     "

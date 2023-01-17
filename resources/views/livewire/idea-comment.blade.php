@@ -17,7 +17,7 @@
             @endadmin
 
             @if($comment->is_status_update)
-                <h4 class="text-xl font-semibold mt-3">
+                <h4 class="text-xl font-semibold mt-3 text-black">
                     Status Changed to "{{ $comment->status->name }}"
                 </h4>
             @endif
