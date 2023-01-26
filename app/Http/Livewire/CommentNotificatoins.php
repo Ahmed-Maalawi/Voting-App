@@ -26,6 +26,7 @@ class CommentNotificatoins extends Component
         $this->notifications = collect([]);
         $this->getNotificationCount();
     }
+    
     public function getNotificationCount()
     {
         $this->notificationCount = auth()->user()->unreadNotifications()->count();
@@ -102,7 +103,7 @@ class CommentNotificatoins extends Component
 
     }
 
-    
+
     public function render()
     {
         return view('livewire.comment-notificatoins');

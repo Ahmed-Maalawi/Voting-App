@@ -38,7 +38,7 @@
                             </a>
                         </form>
                     </div>
-        @else
+                @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                     @if (Route::has('register'))
@@ -70,22 +70,11 @@
                     @endauth
                 </p>
 
-                @auth
+                {{-- @auth --}}
                     @livewire('create-idea')
-                @else
-                    <div class="text-center my-6">
-                        <a
-                            href="{{ route('login') }}"
-                            class="block mx-auto w-1/2 flex h-8 text-xs bg-blue font-semibold rounded-xl border-blue hover:bg-blue-hover transition duration-150 ease-in flex items-center justify-center text-white"
-                        >
-                            <sapn class="ml-1">Login</sapn>
-                        </a>
-                        <a href="{{ route('register') }}"
-                           class="block mt-4 mx-auto w-1/2 flex h-8 text-xs bg-gray-200 font-semibold rounded-xl border-gray-200 hover:bg-gray-400 transition duration-150 ease-in flex items-center justify-center">
-                            <span class="ml-1">Sing Up</span>
-                        </a>
-                    </div>
-                @endauth
+                {{-- @else --}}
+
+                {{-- @endauth --}}
 
             </div>
         </div>
