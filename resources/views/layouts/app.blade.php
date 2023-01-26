@@ -110,6 +110,15 @@
     />
 @endif
 
+
+@if( session('error_message'))
+
+<x-notification-success
+    :type="error"
+    :redirect="true"
+    messageToDisplay="{{ (session('error_message')) }}" />
+@endif
+
 @livewireScripts
 </body>
 </html>

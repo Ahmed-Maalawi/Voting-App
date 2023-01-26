@@ -20,4 +20,6 @@ class StatusFactory extends Factory
             'name' => $this->faker->words(2, true),
         ];
     }
+
+    
 }
